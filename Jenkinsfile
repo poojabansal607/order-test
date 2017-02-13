@@ -1,10 +1,13 @@
 node ("master") {
    stage 'Code Checkout'
        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'poojabansal607@gmail.com', url: 'https://github.com/poojabansal607/OrderManagement.git']]])
-   		
+   	 def mvnHome = tool 'maven-3.0.5'
+	   def pom = readMavenPom file: 'pom.xml'
+	   def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
    		//echo 'Hello World 1'
    stage 'OrderManagementBuild'
        sh ''/usr/share/mvn' clean install' 
+	    input 'Publish?'
 	     // Email for build 
 	    emailext body: '''Hi,
 		Build is successful.

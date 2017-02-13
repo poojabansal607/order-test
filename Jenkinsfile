@@ -1,6 +1,8 @@
-node {
+node ("master") {
    stage 'Code Checkout'
-   		echo 'Hello World 1'
+       checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'poojabansal607@gmail.com', url: 'https://github.com/poojabansal607/OrderManagement.git']]])
+   		
+   		//echo 'Hello World 1'
    stage 'OrderManagementBuild'
    		echo 'Hello World 2'
    stage 'RunSonar'

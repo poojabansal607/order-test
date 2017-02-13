@@ -7,7 +7,7 @@ node ("master") {
       
 	  // def pom = readMavenPom file: 'pom.xml'
 	  // def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-	   sh "${mvnHome}/bin/mvn clean install"
+	   sh "${mvnHome}/bin/mvn clean test install"
       // sh ''/usr/share/mvn' clean install' 
 	   // input 'Publish?'
 	     // Email for build 

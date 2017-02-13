@@ -4,7 +4,13 @@ node ("master") {
    		
    		//echo 'Hello World 1'
    stage 'OrderManagementBuild'
-   		echo 'Hello World 2'
+       sh ''/usr/share/mvn' clean install' 
+	     // Email for build 
+	    emailext body: '''Hi,
+		Build is successful.
+		Regards,
+		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
+   		//echo 'Hello World 2'
    stage 'RunSonar'
    		echo 'Hello World 3'
    stage 'Deployment to QA'

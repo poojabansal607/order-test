@@ -18,7 +18,7 @@ node ("master") {
    		//echo 'Hello World 2'
      // stage 'Sonar'{
 	 //// withSonarQubeEnv('MySonar') {
-	  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+	  //sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
      // sh "${mvnHome}/bin/mvn sonar:sonar"
    		//echo 'Hello World 3'
 		//}

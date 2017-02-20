@@ -13,7 +13,7 @@ node ("master") {
 	     // Email for build 
 	    //emailext body: '''Hi,
 		//Build is successful.
-		Regards,
+		//Regards,
 		//Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
       stage 'Sonar'{

@@ -16,13 +16,13 @@ node ("master") {
 		//Regards,
 		//Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
-      stage 'Sonar'{
-	  withSonarQubeEnv('MySonar') {
+     // stage 'Sonar'{
+	 //// withSonarQubeEnv('MySonar') {
 	  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
      // sh "${mvnHome}/bin/mvn sonar:sonar"
    		//echo 'Hello World 3'
-		}
-		}
+		//}
+		//}
    
       
   

@@ -11,10 +11,10 @@ node ("master") {
       // sh ''/usr/share/mvn' clean install' 
 	   // input 'Publish?'
 	     // Email for build 
-	    emailext body: '''Hi,
-		Build is successful.
+	    //emailext body: '''Hi,
+		//Build is successful.
 		Regards,
-		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
+		//Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
       stage 'Sonar'{
 	  withSonarQubeEnv('My SonarQube Server') {

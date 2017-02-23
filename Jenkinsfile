@@ -16,16 +16,7 @@ node ("master") {
 		Regards,
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
-   stage 'Artifactory upload'
-   def server = Artifactory.server('art-1')
-   def rtMaven = Artifactory.newMavenBuild()
-   //rtMaven.tool = M3
-   rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
-   rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
-   def buildInfo = Artifactory.newBuildInfo()
    
-   stage 'Publish build info'
-        server.publishBuildInfo buildInfo
    
    
    stage 'Deployment to QA'

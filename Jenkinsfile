@@ -3,16 +3,7 @@ node ("master") {
        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'poojabansal607@gmail.com', url: 'https://github.com/poojabansal607/OrderManagement.git']]])
        def mvnHome = tool 'M3'
    		//echo 'Hello World 1'
-  
-   stage 'Artifactory upload'
-   def server = Artifactory.server('art-1')
-   def rtMaven = Artifactory.newMavenBuild()
-   rtMaven.tool = M3
-   rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
-   rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
-   def buildInfo = Artifactory.newBuildInfo()
-   
-    stage 'Build'
+   stage 'Build'
       
 	  // def pom = readMavenPom file: 'pom.xml'
 	  // def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
@@ -25,9 +16,17 @@ node ("master") {
 		Regards,
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
-		
-    stage 'Publish build info'
-        server.publishBuildInfo buildInfo		
+   stage 'Artifactory upload'
+   def server = Artifactory.server('art-1')
+   def rtMaven = Artifactory.newMavenBuild()
+   //rtMaven.tool = M3
+   rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
+   rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+   def buildInfo = Artifactory.newBuildInfo()
+   
+   stage 'Publish build info'
+        server.publishBuildInfo buildInfo
+   
    
    stage 'Deployment to QA'
         echo 'Hello World 4'

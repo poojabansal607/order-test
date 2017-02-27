@@ -36,8 +36,8 @@ node ("master") {
 //	puppet.hiera scope: 'staging', key: 'build-version', value: version
 //	puppet.hiera scope: 'staging', key: 'build-path', value: "http://" + hostaddress + "/builds/app/build-${version}.tar.gz"
 	echo 'Hello World 4'
-    puppet.codeDeploy 'dev'
-    puppet.job 'dev'
+    puppet.codeDeploy 'production'
+    puppet.job 'production'
    
    stage 'Run Acceptance tests'
         echo 'Hello World 5'

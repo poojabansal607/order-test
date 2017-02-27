@@ -29,7 +29,7 @@ node ("master") {
    //stage 'Publish build info'
       //server.publishBuildInfo buildInfo
 	  //Set the Jenkins credentials that hold our Puppet Enterprise RBAC token
-	   puppet.credentials 'pe-access-token'
+	   puppet.credentials 'AP12mtDnhInzYvzaHJzKXPT9imElJ8T-0XqBDpsnrG1E'
 
     stage 'Deploy to dev'
 	input "Ready to deploy to Dev?"

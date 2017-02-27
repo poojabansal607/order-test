@@ -16,11 +16,29 @@ node ("master") {
 		Regards,
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
+		
+		
+   //stage 'Artifactory upload'
+   //def server = Artifactory.server('art-1')
+   //def rtMaven = Artifactory.newMavenBuild()
+   //rtMaven.tool = M3
+   //rtMaven.deployer releaseRepo:'libs-release-local', snapshotRepo:'libs-snapshot-local', server: server
+   //rtMaven.resolver releaseRepo:'libs-release', snapshotRepo:'libs-snapshot', server: server
+   //def buildInfo = Artifactory.newBuildInfo()
    
+   //stage 'Publish build info'
+      //server.publishBuildInfo buildInfo
+	  //Set the Jenkins credentials that hold our Puppet Enterprise RBAC token
+	   puppet.credentials 'secretID'
+
+    stage 'Deploy to dev'
+	input "Ready to deploy to Dev?"
+//	puppet.hiera scope: 'staging', key: 'build-version', value: version
+//	puppet.hiera scope: 'staging', key: 'build-path', value: "http://" + hostaddress + "/builds/app/build-${version}.tar.gz"
+	echo 'Hello World 4'
+    puppet.codeDeploy 'dev'
+    puppet.job 'dev'
    
-   
-   stage 'Deployment to QA'
-        echo 'Hello World 4'
    stage 'Run Acceptance tests'
         echo 'Hello World 5'
    stage 'Run Jmeter Tests'

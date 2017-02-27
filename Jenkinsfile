@@ -29,14 +29,14 @@ node ("master") {
    //stage 'Publish build info'
       //server.publishBuildInfo buildInfo
 	  //Set the Jenkins credentials that hold our Puppet Enterprise RBAC token
-	   puppet.credentials 'AP12mtDnhInzYvzaHJzKXPT9imElJ8T-0XqBDpsnrG1E'
+	   puppet.credentials 'SecretID'
 
     stage 'Deploy to dev'
 	input "Ready to deploy to Dev?"
 //	puppet.hiera scope: 'staging', key: 'build-version', value: version
 //	puppet.hiera scope: 'staging', key: 'build-path', value: "http://" + hostaddress + "/builds/app/build-${version}.tar.gz"
 	echo 'Hello World 4'
-    puppet.codeDeploy 'production'
+    puppet.codeDeploy 'production', credentials: 'SecretID'
     puppet.job 'production'
    
    stage 'Run Acceptance tests'

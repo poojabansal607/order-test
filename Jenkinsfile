@@ -23,9 +23,9 @@ node ("master") {
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
 	 stage 'copy'	
-	 sh "cd /var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT"
+	 sh "cd ~/var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT"
 	   //echo 'pass1'
-	   sh "cp -r order-management-1.0-SNAPSHOT.war /var"
+	   sh "cp -r ~/var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT/order-management-1.0-SNAPSHOT.war ~/var"
 	   echo 'pass2'
    //stage 'Artifactory upload'
    //def server = Artifactory.server('art-1')

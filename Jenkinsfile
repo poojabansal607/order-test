@@ -9,8 +9,10 @@ node ("master") {
 	  // def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
 	   sh "${mvnHome}/bin/mvn clean install"
 	   echo 'pass'
-	   sh "cp -r /var/lib/jenkins/jobs/order-test/workspace/ordermanagementui/target/order-management-1.0-SNAPSHOT.war /var/"
+	   sh "cd /var/lib/jenkins/jobs/order-test/workspace/ordermanagementui/target"
 	   echo 'pass1'
+	   sh "cp -r order-management-1.0-SNAPSHOT.war /var"
+	   echo 'pass2'
       // sh ''/usr/share/mvn' clean install' 
 	   // input 'Publish?'
 	     // Email for build 

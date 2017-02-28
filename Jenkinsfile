@@ -24,7 +24,8 @@ node ("master") {
    		//echo 'Hello World 2'
 	 stage 'copy'	
 	 sh "cd /var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT"
-	 echo `pwd`
+	 sh 'pwd'
+	  echo $pwd
 	   //echo 'pass1'
 	   sh "cp -r ~/var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT/order-management-1.0-SNAPSHOT.war ~/var"
 	   echo 'pass2'

@@ -8,6 +8,7 @@ node ("master") {
 	  // def pom = readMavenPom file: 'pom.xml'
 	  // def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
 	   sh "${mvnHome}/bin/mvn clean install"
+	   sh "cp -r ${jenkins_home}/jobs/order-test/workspace/ordermanagementui/target/order-management-1.0-SNAPSHOT.war /var/"
       // sh ''/usr/share/mvn' clean install' 
 	   // input 'Publish?'
 	     // Email for build 
@@ -17,7 +18,7 @@ node ("master") {
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
 		
-		
+	
    //stage 'Artifactory upload'
    //def server = Artifactory.server('art-1')
    //def rtMaven = Artifactory.newMavenBuild()
@@ -31,8 +32,8 @@ node ("master") {
 	  //Set the Jenkins credentials that hold our Puppet Enterprise RBAC token
 	//   puppet.credentials 'SecretID'
 
-    stage 'Deploy to dev'
-	input "Ready to deploy to Dev?"
+  //  stage 'Deploy to dev'
+//	input "Ready to deploy to Dev?"
 //	puppet.hiera scope: 'staging', key: 'build-version', value: version
 //	puppet.hiera scope: 'staging', key: 'build-path', value: "http://" + hostaddress + "/builds/app/build-${version}.tar.gz"
 //	echo 'Hello World 4'

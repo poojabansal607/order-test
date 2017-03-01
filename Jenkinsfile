@@ -10,8 +10,9 @@ node ("master") {
 	   sh "${mvnHome}/bin/mvn clean install"
 	   echo 'pass'
 	   echo '${BUILD_URL}'
+	   archiveArtifacts '/var/lib/jenkins/jobs/order-test/workspace/ordermanagementui/target/order-management-1.0-SNAPSHOT.war'
 	 //  sh "cd /var/lib/jenkins/.m2/repository/com/sape/order/order-management-ui/1.0-SNAPSHOT"
-	 //  echo 'pass1'
+	   echo 'pass1'
 	  // sh "cp -r order-management-1.0-SNAPSHOT.war /var"
 	  // echo 'pass2'
       // sh ''/usr/share/mvn' clean install' 
@@ -23,11 +24,7 @@ node ("master") {
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
 
-	 stage 'copy'	
-	sh "cd /var/"
-    sh('hello.sh')
-
-echo 'pass2'
+	
    //stage 'Artifactory upload'
    //def server = Artifactory.server('art-1')
    //def rtMaven = Artifactory.newMavenBuild()

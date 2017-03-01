@@ -24,9 +24,9 @@ node ("master") {
    		//echo 'Hello World 2'
 
 	 stage 'copy'	
-	 dir ('/var') { 
+	sh "cd /var/"
     sh('hello.sh')
-}
+
 echo 'pass2'
    //stage 'Artifactory upload'
    //def server = Artifactory.server('art-1')

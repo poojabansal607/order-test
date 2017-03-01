@@ -22,9 +22,7 @@ node ("master") {
 		Regards,
 		Pooja''', compressLog: true, recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: 'Build is successful', to: 'pbansal13@sapient.com'
    		//echo 'Hello World 2'
-		
-    stage 'Publish build info'
-    server.publishBuildInfo buildInfo
+
 	 stage 'copy'	
 	 dir ('/var') { 
     sh('hello.sh')
